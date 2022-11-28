@@ -1,0 +1,20 @@
+@import './color';
+@import './fonts';
+
+body {
+    font-family: $font-family-normal !important;
+    background-color: $color-white !important;
+    color: $color-blue-dark !important;
+}
+
+footer {
+    background-color: $color-grey;
+}
+
+aside {
+    background-color: $color-grey;
+}
+
+nav {
+    background-color: $color-grey;
+}
