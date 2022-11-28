@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  dnotas-project:
+    container_name: dnotas-project
+    image: vuejs_docker:dev
+    build:
+      context: .
+    volumes:
+      - '.:/app'
+      # - '/app/node_modules'
+    ports:
+      - '8080:8080'
