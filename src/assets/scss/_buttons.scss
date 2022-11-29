@@ -1,0 +1,18 @@
+button {
+    &.btn-blue-light {
+        background-color: $color-blue-light;
+        border-color: $color-blue-light;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-blue-dark !important;
+            border-color: $color-blue-dark !important;
+        }
+
+        &:focus {
+            background-color: $color-blue-dark !important;
+            border-color: $color-blue-dark !important;
+        }
+
+    }
+}

@@ -9,9 +9,10 @@
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Buscar"
                         aria-label="Buscar">
-                    <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                    <button class="btn btn-primary btn-blue-light" type="submit"><i class="bi bi-search"></i></button>
                 </form>
             </div>
+            <a href="/create-note"><button class="btn btn-primary btn-blue-light"><b>New Note</b></button></a>
         </div>
     </nav>
 

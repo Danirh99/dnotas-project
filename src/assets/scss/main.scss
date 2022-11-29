@@ -1,5 +1,6 @@
 @import './color';
 @import './fonts';
+@import './buttons';
 
 body {
     font-family: $font-family-normal !important;
@@ -9,6 +10,9 @@ body {
 
 footer {
     background-color: $color-grey;
+    a {
+        color: $color-blue-light;
+    }
 }
 
 aside {
@@ -17,4 +21,13 @@ aside {
 
 nav {
     background-color: $color-grey;
+    input {
+        background-color: $color-white !important;
+        color: $color-blue-dark !important;
+        width: 350px !important;
+        &:focus {
+            border-color: $color-blue-light !important;
+            box-shadow: 0 0 0 0.25rem rgb(49 199 250 / 25%) !important;
+        }
+    }
 }
