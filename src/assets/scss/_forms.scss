@@ -1,0 +1,29 @@
+form.form-notes {
+    input.title-note {
+        background-color: $color-grey !important;
+        color: $color-blue-dark !important;
+        border-color: $color-grey !important;
+        font-size: 1.5rem;
+
+        &:focus {
+            border-color: $color-blue-light !important;
+            box-shadow: 0 0 0 0.25rem rgb(49 199 250 / 25%) !important;
+        }
+    }
+
+    textarea {
+        background-color: $color-grey !important;
+        color: $color-blue-dark !important;
+        border-color: $color-grey !important;
+        font-size: 1rem;
+
+        &:focus {
+            border-color: $color-blue-light !important;
+            box-shadow: 0 0 0 0.25rem rgb(49 199 250 / 25%) !important;
+        }
+
+        &.response {
+            color: black !important;
+        }
+    }
+}

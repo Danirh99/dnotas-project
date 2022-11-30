@@ -5,7 +5,7 @@
                 <button class="btn btn-primary d-md-none" type="button"><i class="bi bi-plus"></i></button>
                 <a href="/"
                     class="d-flex align-items-center py-3 my-0 me-md-auto text-white text-decoration-none m-auto">
-                    <img src="../assets/logo.svg" class="w-75 m-auto" alt="be productive">
+                    <img src="../assets/logo.svg" class="w-50 m-auto" alt="dNotes">
                 </a>
                 <hr>
             </div>
