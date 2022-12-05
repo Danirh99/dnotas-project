@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheWelcome from "../components/TheWelcome.vue";
+import Home from "../components/Home.vue";
 import Footer from "../components/Footer.vue";
 import NavbarHome from "../components/NavbarHome.vue";
 import Sidebar from "../components/Sidebar.vue";
@@ -27,7 +27,7 @@ import Sidebar from "../components/Sidebar.vue";
 
           <div class="py-1 px-3 py-md-3 px-md-5">
             <main>
-              <TheWelcome />
+              <Home />
             </main>
           </div>
         </div>

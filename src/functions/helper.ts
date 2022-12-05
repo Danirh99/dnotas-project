@@ -11,7 +11,7 @@ export function saveNote(title: string, body: string): boolean {
         let today: string = date_today_format.toLocaleTimeString();
 
         // Variable with a random number and the title of the nore
-        let id: string = Math.floor(Math.random() * 1000000) + encodeURI(title);
+        let id: string = Math.floor(Math.random() * 1000000000) + encodeURI(title);
 
         let note = new Note(id, title, today, body);
 

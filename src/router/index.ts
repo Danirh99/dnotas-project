@@ -22,6 +22,11 @@ const router = createRouter({
       path: "/create-note",
       name: "create-note",
       component: CreatenoteView,
+    },
+    {
+      path: "/see-note/:id",
+      name: "see-note",
+      component: CreatenoteView,
     }
   ],
 });

@@ -19,6 +19,20 @@ footer {
 
 aside {
     background-color: $color-grey;
+
+    .title {
+        color: $color-blue-dark;
+        font-size: 1.5rem;
+        font-weight: $font-bold;
+    }
+    .date {
+        color: $color-blue-light;
+        font-size: 1rem;
+        font-weight: $font-regular;
+    }
+    hr {
+        border-color: $color-blue-dark;
+    }
 }
 
 nav {
