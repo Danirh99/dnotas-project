@@ -38,7 +38,7 @@ import Sidebar from "../components/Sidebar.vue";
     </div>
 
     <div class="row">
-      <div class="col-12 p-0">
+      <div class="col-12 p-0 class-footer ">
         <Footer />
       </div>
     </div>
@@ -47,3 +47,14 @@ import Sidebar from "../components/Sidebar.vue";
 
 
 </template>
+
+
+<style lang="scss">
+
+.class-footer {
+    position: fixed;
+    bottom: 0;
+}
+
+</style>
+

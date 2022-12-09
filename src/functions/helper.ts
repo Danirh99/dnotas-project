@@ -1,8 +1,7 @@
-export function saveNote(title: string, body: string): boolean {
-    let b_error: boolean = false;
-    if (checkData(title, body)) {
+export function saveNote(title: string, body: string): any {
 
-        b_error = true;
+    let a_resp = checkData(title, body)
+    if (a_resp['b_error']) {
 
         // Variable with the actual date in ms
         const date_today_format = new Date(Date.now());
@@ -19,7 +18,7 @@ export function saveNote(title: string, body: string): boolean {
         if (localStorage.getItem("notes") != null) {
 
             // // Save the data of the urls in a JSON Format
-            let save_notes : { [id_url: string]: Note } = JSON.parse(localStorage.getItem("notes")!);
+            let save_notes: { [id_url: string]: Note } = JSON.parse(localStorage.getItem("notes")!);
 
             // Save the new note
             save_notes[id] = note
@@ -30,18 +29,36 @@ export function saveNote(title: string, body: string): boolean {
         else {
 
             // Save the note in the local Storage
-            let new_note : { [id_url: string]: Note } = {};
+            let new_note: { [id_url: string]: Note } = {};
             new_note[id] = note;
             localStorage.setItem("notes", JSON.stringify(new_note));
 
         }
     }
 
-    return b_error
+    return a_resp;
 }
 
-function checkData(title: string, body: string): boolean {
-    return title.length > 0 && body.length > 0;
+function checkData(title: string, body: string): any {
+    let a_resp = {
+        "b_error": false,
+        "s_title_message": 'You need a title',
+        "s_body_message": 'You need a body message'
+    }
+
+    if (title.length > 0 && body.length > 0)
+    {
+        a_resp["b_error"] = true
+    }
+
+    if (title.length > 0) {
+        a_resp["s_title_message"] = ""
+    }
+    if (body.length > 0) {
+        a_resp["s_body_message"] = ""
+    }
+
+    return a_resp;
 }
 
 class Note {

@@ -28,11 +28,21 @@ import { saveNote } from "@/functions/helper";
 
 export default defineComponent({
     props: ["title", "body_message"],
- 
+
     methods: {
-        save(){
-            saveNote(this.title, this.body_message);
-            console.log('pulsado')
+        save() {
+            let a_resp: any = saveNote(this.title, this.body_message);
+
+            // Check if the note has been created correctly
+            if (a_resp['b_error']) {
+                // Go home with hash to open a popup
+                this.$router.push({ path: '/', hash: '#show' })
+            }
+            else {
+                this.$emit('titleerror', a_resp['s_title_message'])
+                this.$emit('bodyerror', a_resp['s_body_message'])
+            }
+
         }
     }
 })
