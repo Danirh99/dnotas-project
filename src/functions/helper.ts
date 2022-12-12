@@ -39,6 +39,45 @@ export function saveNote(title: string, body: string): any {
     return a_resp;
 }
 
+export function editNote(title: string, body: string, idNote: string): any {
+    let a_resp = checkData(title, body)
+    if (a_resp['b_error']) {
+
+        // Variable with the actual date in ms
+        const date_today_format = new Date(Date.now());
+
+        // Variable with the actual date in the correct format
+        let today: string = date_today_format.toLocaleTimeString();
+
+        let note = new Note(idNote, title, today, body);
+
+        // Check if we have localstorage data
+        if (localStorage.getItem("notes") != null) {
+
+            // // Save the data of the urls in a JSON Format
+            let save_notes: { [id_url: string]: Note } = JSON.parse(localStorage.getItem("notes")!);
+
+            // Save the new note
+            save_notes[idNote] = note
+
+            // Add the new note to the local Storage
+            localStorage.setItem("notes", JSON.stringify(save_notes));
+        }
+        else {
+
+            // Save the note in the local Storage
+            let new_note: { [id_url: string]: Note } = {};
+            new_note[idNote] = note;
+            localStorage.setItem("notes", JSON.stringify(new_note));
+
+        }
+    }
+
+    return a_resp;
+
+
+}
+
 function checkData(title: string, body: string): any {
     let a_resp = {
         "b_error": false,
@@ -46,8 +85,7 @@ function checkData(title: string, body: string): any {
         "s_body_message": 'You need a body message'
     }
 
-    if (title.length > 0 && body.length > 0)
-    {
+    if (title.length > 0 && body.length > 0) {
         a_resp["b_error"] = true
     }
 

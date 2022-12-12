@@ -30,4 +30,20 @@ button {
             border-color: $color-error !important;
         }
     }
+
+    &.btn-blue-dark{
+        background-color: $color-blue-dark;
+        border-color: $color-blue-dark;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-blue-dark !important;
+            border-color: $color-blue-dark !important;
+        }
+
+        &:focus {
+            background-color: $color-blue-dark !important;
+            border-color: $color-blue-dark !important;
+        }
+    }
 }
