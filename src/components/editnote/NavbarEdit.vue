@@ -36,7 +36,7 @@ export default defineComponent({
             // Check if the note has been created correctly
             if (a_resp['b_error']) {
                 // Go home with hash to open a popup
-                this.$router.push({ path: '/see-note/'+this.id, hash: '#show' })
+                this.$router.push({ path: '/see-note/'+this.id, hash: '#updated' })
             }
             else {
                 this.$emit('titleerror', a_resp['s_title_message'])

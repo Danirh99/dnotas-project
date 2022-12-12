@@ -5,13 +5,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Note Saved</h5>
+                    <h5 class="modal-title">{{ title_popup }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>The note has been saved correctly</p>
+                    <p>{{ body_popup }}</p>
                 </div>
             </div>
         </div>
@@ -20,7 +20,6 @@
 </template>
 
 <script lang="ts">
-import $ from 'jquery';
 
 // import bootstrap from "bootstrap";
 import { defineComponent } from "vue";
@@ -32,6 +31,8 @@ export default defineComponent({
             hash: location.hash ? location.hash : '',
             active: false,
             show: false,
+            title_popup: '',
+            body_popup: '',
             message: this.firstMessage()
         }
     },
@@ -46,10 +47,19 @@ export default defineComponent({
     },
 
     mounted() {
-        this.hash = this.hash == '#show' ? 'show' : '';
-
-        if (this.hash == 'show') {
-            this.openModal()
+        switch (this.hash) {
+            case ('#show'):
+                this.hash = 'show'
+                this.title_popup = 'Note Saved';
+                this.body_popup = 'The note has been saved correctly';
+                this.openModal()
+                break;
+            case ('#updated'):
+                this.hash = 'show'
+                this.title_popup = 'Note Updated';
+                this.body_popup = 'The note has been updated correctly';
+                this.openModal()
+                break;
         }
     },
 
@@ -92,15 +102,14 @@ export default defineComponent({
                         html += "<p>" + info_notes["date"] + "</p>";
                         html += '</div>';
                         html += '<div class="d-flex justify-content-between">'
-                        html += '<span class="align-self-center"><a title="Edit" href="/edit-note/'+info_notes["id"]+'"><button class="btn btn-primary btn-blue-dark me-5"><i class="bi bi-pencil-square"></i></button></a></span>';
+                        html += '<span class="align-self-center"><a title="Edit" href="/edit-note/' + info_notes["id"] + '"><button class="btn btn-primary btn-blue-dark me-5"><i class="bi bi-pencil-square"></i></button></a></span>';
                         html += '<span class="align-self-center"><button class="btn btn-primary btn-error"><i class="bi bi-trash"></i></button></span>';
                         html += '</div>';
                         html += '</div>';
                         html += "<hr>";
                         html += "<p>" + info_notes["body"] + "</p>";
                     }
-                    else
-                    {
+                    else {
                         html = "<h1>The note Doesn't exist</h1>";
                     }
                 }
