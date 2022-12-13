@@ -23,6 +23,7 @@
 
 // import bootstrap from "bootstrap";
 import { defineComponent } from "vue";
+import $ from 'jquery';
 
 export default defineComponent({
 
@@ -47,6 +48,7 @@ export default defineComponent({
     },
 
     mounted() {
+
         switch (this.hash) {
             case ('#show'):
                 this.hash = 'show'
@@ -58,6 +60,12 @@ export default defineComponent({
                 this.hash = 'show'
                 this.title_popup = 'Note Updated';
                 this.body_popup = 'The note has been updated correctly';
+                this.openModal()
+                break;
+            case ('#delete'):
+                this.hash = 'show'
+                this.title_popup = 'Note deleted';
+                this.body_popup = 'The note has been deleted correctly';
                 this.openModal()
                 break;
         }
@@ -103,11 +111,26 @@ export default defineComponent({
                         html += '</div>';
                         html += '<div class="d-flex justify-content-between">'
                         html += '<span class="align-self-center"><a title="Edit" href="/edit-note/' + info_notes["id"] + '"><button class="btn btn-primary btn-blue-dark me-5"><i class="bi bi-pencil-square"></i></button></a></span>';
-                        html += '<span class="align-self-center"><button class="btn btn-primary btn-error"><i class="bi bi-trash"></i></button></span>';
+                        html += '<span class="align-self-center"><button class="btn btn-primary btn-error" id="delete" data-note="' + info_notes["id"] + '"><i class="bi bi-trash"></i></button></span>';
                         html += '</div>';
                         html += '</div>';
                         html += "<hr>";
                         html += "<p>" + info_notes["body"] + "</p>";
+
+                        this.$nextTick(() => {
+                            $('#delete').on('click', function () {
+                                let noteid = $('#delete').data('note');
+                                let info_notes = JSON.parse(localStorage.getItem("notes")!);
+                                if(info_notes[noteid]['id'].length > 0)
+                                {
+                                    console.log('entra')
+                                    delete info_notes[noteid];
+                                    localStorage.setItem("notes", JSON.stringify(info_notes));
+                                    window.location.href = "/#delete"
+                                }
+
+                            })
+                        });
                     }
                     else {
                         html = "<h1>The note Doesn't exist</h1>";
@@ -121,8 +144,6 @@ export default defineComponent({
                 html = '<h1>Welcome to dNotes</h1>'
                 html += '<p>You can create all the notes that do you need</p>'
             }
-
-
             return html
         }
     }
