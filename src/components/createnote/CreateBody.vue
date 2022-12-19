@@ -2,24 +2,43 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6 ps-0">
-                <textarea class="form-control mt-2" v-model="input"
+                <!-- <textarea class="form-control mt-2" v-model="input"
                     @input="$emit('update:modelValue', $event.target.value)" id="bodymessage" rows="6"
-                    placeholder="Note" v-on:keyup="seeResult()"></textarea>
+                    placeholder="Note" v-on:keyup="seeResult()"></textarea> -->
+                <editor api-key="no-api-key" v-model="input" @input="$emit('update:modelValue', $event.target.value)"
+                    id="bodymessage" rows="6" placeholder="New Note" v-on:keyup="seeResult()" :init="{
+                        height: 500,
+                        menubar: false,
+                        plugins: [
+                            'advlist autolink lists link image charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount'
+                        ],
+                        toolbar:
+                            'undo redo | formatselect | bold italic backcolor | \
+                                                                                                   alignleft aligncenter alignright alignjustify | \
+                                                                                                   bullist numlist outdent indent | removeformat | help'
+                    }" />
             </div>
             <div class="col-12 col-md-6 pe-0">
                 <textarea class="form-control mt-2 response" v-model="text_response" rows="6" disabled></textarea>
             </div>
         </div>
-        <p class="error-class">{{s_error_body}}</p>
+        <p class="error-class">{{ s_error_body }}</p>
+
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import Editor from '@tinymce/tinymce-vue'
 
 export default defineComponent({
 
     props: ['s_error_body'],
+    components: {
+        'editor': Editor
+    },
 
     data() {
         const input = ref("")
@@ -32,6 +51,7 @@ export default defineComponent({
     methods: {
         seeResult() {
             this.text_response = this.input;
+            this.input = this.input;
         }
     }
 })

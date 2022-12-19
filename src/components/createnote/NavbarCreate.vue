@@ -31,6 +31,7 @@ export default defineComponent({
 
     methods: {
         save() {
+            console.log(this.body_message);
             let a_resp: any = saveNote(this.title, this.body_message);
 
             // Check if the note has been created correctly
