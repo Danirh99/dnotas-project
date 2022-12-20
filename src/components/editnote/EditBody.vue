@@ -6,7 +6,7 @@
                     @input="$emit('update:modelValue', $event.target.value)" id="bodymessage" rows="6"
                     placeholder="Note" v-on:keyup="seeResult()"></textarea>
             </div>
-            <div class="col-12 col-md-6 pe-0">
+            <div class="col-12 col-md-6 pe-0 d-none d-md-block">
                 <textarea class="form-control mt-2 response" v-model="text_response" rows="6" disabled></textarea>
             </div>
         </div>
