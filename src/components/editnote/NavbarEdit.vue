@@ -1,10 +1,7 @@
 <template>
 
     <nav class="navbar navbar-expand-lg topbar py-4 navbar-dark bgd-dark ">
-        <div class="container-fluid justify-content-between">
-            <button class="navbar-toggler" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="container-fluid">
             <div>
                 <a href="/"
                     class="d-flex align-items-center py-3 my-0 me-md-auto text-white text-decoration-none m-auto">
@@ -47,3 +44,17 @@ export default defineComponent({
     }
 })
 </script>
+
+<style lang="scss">
+@media (min-width: 720px) {
+    .navbar .container-fluid {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 719px) {
+    .navbar .container-fluid {
+        justify-content: center;
+    }
+}
+</style>

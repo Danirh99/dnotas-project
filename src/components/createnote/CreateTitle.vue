@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input class="form-control me-2 title-note" type="text" v-model="input"
+        <input class="form-control me-2 mt-2 mt-md-0 title-note" type="text" v-model="input"
             @input="$emit('update:modelValue', $event.target.value)" placeholder="Title of the note">
         <p class="error-class">{{ s_error_title }}</p>
     </div>

@@ -2,11 +2,15 @@
     <aside>
         <div class="col-auto px-sm-2 px-0 p-0 navbar-left bgd-dark">
             <div class="d-flex flex-column align-items-end align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <button class="btn btn-primary d-md-none" type="button"><i class="bi bi-plus"></i></button>
-                <a href="/"
-                    class="d-flex align-items-center py-3 my-0 me-md-auto text-white text-decoration-none m-auto">
-                    <img src="../assets/logo.svg" class="w-50 m-auto" alt="dNotes">
-                </a>
+                <div class="d-flex d-md-block">
+                    <a href="/"
+                        class="d-flex align-items-center py-3 my-0 me-md-auto text-white text-decoration-none m-auto">
+                        <img src="../assets/logo.svg" class="w-50 m-auto" alt="dNotes">
+                    </a>
+                    <button class="btn btn-primary d-md-none button-close" type="button" v-on:click="closeSidebar()"><i
+                            class="bi bi-plus"></i></button>
+
+                </div>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100"
                     id="menu" v-if="notes != ''">
@@ -53,8 +57,48 @@ export default defineComponent({
             }
 
             return notes
+        },
+
+        closeSidebar() {
+            $('.class-sidebar').removeClass('activos')
+            $('.class-sidebar').addClass('height-0');
+            $('.class-rest').animate({ opacity: 1 }, 75)
+            $('.class-rest').css('pointer-events', 'all')
+
         }
     }
 })
 
 </script>
+
+<style lang="scss">
+@import '../assets/scss/main.scss';
+
+
+div.enlace {
+    color: $color-white !important;
+    border-radius: 10px;
+    font-weight: $color-blue-dark;
+    width: 100%;
+    transition: 0.4s;
+
+    &.active {
+        background-color: $color-blue-light;
+    }
+
+    &:hover {
+        background-color: $color-blue-light;
+        transition: 0.4s;
+    }
+}
+
+.button-close {
+    min-width: 50px;
+    background-color: $color-blue-light;
+    border: none;
+}
+
+// .h-vh {
+//     height: 100vh !important;
+// }
+</style>

@@ -52,8 +52,10 @@ export default defineComponent({
     }
 }
 
-// @media (max-width: 719px) {
-//     .navbar .container-fluid {}
-// }
+@media (max-width: 719px) {
+    .navbar .container-fluid {
+        justify-content: center;
+    }
+}
 </style>
 
