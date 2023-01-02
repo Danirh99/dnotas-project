@@ -66,7 +66,8 @@ export default {
 
         getNoteFromLS(): any {
             let info_notes = JSON.parse(localStorage.getItem("notes")!);
-            let id = encodeURI(this.$route.params.id);
+            let route : any = this.$route.params;
+            let id = encodeURI(route.id);
 
             let a_data : any[] = [];
 
@@ -76,11 +77,7 @@ export default {
                 a_data[1] = info_notes['body'];
                 a_data[2] = info_notes['id'];
             }
-
-
             return a_data;
-
-
         },
 
         save() {

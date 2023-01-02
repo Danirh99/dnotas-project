@@ -87,15 +87,16 @@ export default defineComponent({
             setTimeout(() => (this.show = !this.show), 10);
         },
 
-        firstMessage(noteid: string = '') {
+        firstMessage(noteid: any = '') {
             let html = '';
             if (this.$route.name == 'see-note') {
                 if (this.$route.params.id) {
                     let info_notes = JSON.parse(localStorage.getItem("notes")!);
-                    let id = '';
+                    let id : string = '';
                     if (noteid == '') {
+                        let route : any = this.$route.params;
                         // Codigiamos la url del titulo
-                        id = encodeURI(this.$route.params.id);
+                        id = encodeURI(route.id);
                     }
                     else {
                         id = encodeURI(noteid);

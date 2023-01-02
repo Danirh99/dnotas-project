@@ -85,11 +85,6 @@ div.enlace {
     &.active {
         background-color: $color-blue-light;
     }
-
-    &:hover {
-        background-color: $color-blue-light;
-        transition: 0.4s;
-    }
 }
 
 .button-close {

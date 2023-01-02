@@ -33,6 +33,7 @@ export default defineComponent({
     methods: {
         /**
          * Función que va la ruta del filtro si coincide
+         * SIN HACER
          * @param busqueda Valor del input de búsqueda
          */
         buscar(busqueda: string) {
